@@ -19,7 +19,7 @@ public class Question {
     private String subject;
     @Column(columnDefinition = "TEXT")
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDateTime createDate;
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 }
