@@ -10,15 +10,15 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 public class AnswerService {
-     private final AnswerRepository answerRepository;
+    private final AnswerRepository answerRepository;
 
-     public String create(Question question, String content){
-         Answer answer = new Answer();
-         answer.setContent(content);
-         answer.setQuestion(question);
-         answer.setCreateDate(LocalDateTime.now());
-         this.answerRepository.save(answer);
+    public String create(Question question, String content) {
+        Answer answer = new Answer();
+        answer.setContent(content);
+        answer.setQuestion(question);
+        answer.setCreateDate(LocalDateTime.now());
+        this.answerRepository.save(answer);
 
-         return question.getSubject();
-     }
+        return question.getSubject();
+    }
 }

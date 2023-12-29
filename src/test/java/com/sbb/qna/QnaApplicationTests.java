@@ -84,19 +84,19 @@ class QnaApplicationTests {
             this.questionRepository.save(question);
         }
     }
+
     @Test
-    void test08(){
+    void test08() {
         Optional<Question> oq = this.questionRepository.findById(3);
-        if(oq.isPresent()){
+        if (oq.isPresent()) {
             Question question = oq.get();
             this.questionRepository.delete(question);
         }
     }
 
 
-
     @Test
-    void test09(){
+    void test09() {
         Answer a = new Answer();
         Optional<Question> oq = this.questionRepository.findById(1);
         Question question = oq.get();
@@ -105,27 +105,30 @@ class QnaApplicationTests {
         a.setContent("답변~id=1");
         this.answerRepository.save(a);
     }
+
     @Test
-    void test10(){
+    void test10() {
         List<Answer> answerList = this.answerRepository.findAll();
-        assertEquals(1,answerList.size());
+        assertEquals(1, answerList.size());
     }
+
     @Test
-    void test11(){
+    void test11() {
         Optional<Answer> oa = this.answerRepository.findById(2);
-        if(oa.isPresent()){
+        if (oa.isPresent()) {
             Answer answer = oa.get();
             answer.setContent("변경한 답변");
             this.answerRepository.save(answer);
-            assertEquals("변경한 답변",oa.get().getContent());
+            assertEquals("변경한 답변", oa.get().getContent());
         }
     }
+
     @Test
-    void test12(){
+    void test12() {
         Optional<Answer> oa = this.answerRepository.findById(1);
-        if(oa.isPresent()){
+        if (oa.isPresent()) {
             this.answerRepository.delete(oa.get());
-            assertEquals(0,this.answerRepository.count());
+            assertEquals(0, this.answerRepository.count());
         }
     }
 }
