@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -22,10 +23,10 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<Question> questionList = this.questionService.findAll();
+    public String list(Model model ,@RequestParam(value = "page",defaultValue = "0") int page) {
+        Page<Question> paging = this.questionService.getList(page);
 
-        model.addAttribute("questionList", questionList);
+        model.addAttribute("paging", paging);
 
         return "question_list";
     }
