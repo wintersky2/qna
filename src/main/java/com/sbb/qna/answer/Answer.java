@@ -1,6 +1,7 @@
 package com.sbb.qna.answer;
 
 import com.sbb.qna.question.Question;
+import com.sbb.qna.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +22,6 @@ public class Answer {
     private LocalDateTime createDate;
     @ManyToOne
     private Question question;
+    @ManyToOne
+    private SiteUser author;
 }

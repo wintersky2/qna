@@ -5,6 +5,7 @@ import com.sbb.qna.answer.AnswerRepository;
 import com.sbb.qna.question.Question;
 import com.sbb.qna.question.QuestionRepository;
 import com.sbb.qna.question.QuestionService;
+import com.sbb.qna.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -139,7 +140,18 @@ class QnaApplicationTests {
         for (int i = 1; i <= 300; i++) {
             String subject = String.format("테스트 데이터입니다:[%03d]", i);
             String content = "내용무";
-            this.questionService.create(subject, content);
+            this.questionService.create(subject, content,null);
         }
+    }
+    @Autowired
+    UserService userService;
+
+    @Test
+    void test14(){
+        this.userService.create("Test","1234","test@test.com");
+    }
+    @Test
+    void test15(){
+        this.userService.create("Test2","1234","test2@test.com");
     }
 }
